@@ -1,7 +1,16 @@
 # TO-DO: Implement a recursive implementation of binary search
 def binary_search(arr, target, start, end):
     # Your code here
-
+    if end > start:
+        middle = int((start + end) / 2)
+        if arr[middle] == target:
+            return 1
+        elif arr[middle] > target:
+            return binary_search(arr, target, start, middle - 1)
+        else:
+            return binary_search(arr, target, middle + 1, end)
+    else:
+        return -1 # element is not in the collection
 
 # STRETCH: implement an order-agnostic binary search
 # This version of binary search should correctly find 
@@ -11,4 +20,4 @@ def binary_search(arr, target, start, end):
 # or iteratively
 def agnostic_binary_search(arr, target):
     # Your code here
-
+    pass
