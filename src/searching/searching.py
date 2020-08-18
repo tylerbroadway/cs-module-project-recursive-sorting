@@ -1,16 +1,20 @@
 # TO-DO: Implement a recursive implementation of binary search
+import sys
+sys.setrecursionlimit(1500)
+
 def binary_search(arr, target, start, end):
     # Your code here
-    if end > start:
-        middle = int((start + end) / 2)
-        if arr[middle] == target:
-            return 1
-        elif arr[middle] > target:
-            return binary_search(arr, target, start, middle - 1)
+    if end >= start:
+        mid = (start + (end - 1)) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] > target:
+            return binary_search(arr, target, start, mid + 1)
         else:
-            return binary_search(arr, target, middle + 1, end)
+            return binary_search(arr, target, mid + 1, end)
     else:
-        return -1 # element is not in the collection
+        return -1
 
 # STRETCH: implement an order-agnostic binary search
 # This version of binary search should correctly find 
